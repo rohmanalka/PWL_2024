@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use Illuminate\Foundation\Console\AboutCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +19,7 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']); #Modif Prak 2
+// Route::get('/', [PageController::class, 'index']); #Modif Prak 2
 
 Route::get('/hello', [WelcomeController::class,'hello']); #Modif Prak 2
 
@@ -27,7 +31,7 @@ Route::get('/salam', function () {
     return 'Selamat Datang';
 });
 
-Route::get('/about', [PageController::class, 'about']); #Modif Prak 2
+// Route::get('/about', [PageController::class, 'about']); #Modif Prak 2
 
 Route::get('/user/{nama}', function ($name) {
     return 'Nama saya ' . $name;
@@ -37,7 +41,7 @@ Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
     return 'Pos ke-' . $postId . " Komentar ke-: " . $commentId;
 });
 
-Route::get('/articles/{id}', [PageController::class, 'articles']); #Modif Prak 2
+// Route::get('/articles/{id}', [PageController::class, 'articles']); #Modif Prak 2
 
 // Route::get('/user/{name?}', function ($name = null) {
 //     return 'Nama saya ' . $name;
@@ -94,3 +98,8 @@ Route::get('/user/{name?}', function ($name = 'John') {
 // #View Routes
 // Route::view('/welcome', 'welcome');
 // Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+#Modifikasi 2 Prak 2
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/about', [AboutController::class, 'about']);
+Route::get('/articles/{id}', [ArticleController::class, 'articles']);
