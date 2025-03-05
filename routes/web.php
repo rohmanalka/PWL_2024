@@ -118,3 +118,12 @@ Route::resource('photos', PhotoController::class)->except([
     'update',
     'destroy'
 ]);
+
+#Prak 3
+// Route::get('/greeting', function () {
+//     return view('hello', ['name' => 'Alka']);
+// });
+#Modif
+Route::get('/greeting', function () {
+    return view('blog.hello', ['name' => 'Alka']);
+});
