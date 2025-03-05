@@ -7,6 +7,7 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Foundation\Console\AboutCommand;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ use Illuminate\Foundation\Console\AboutCommand;
 
 // Route::get('/', [PageController::class, 'index']); #Modif Prak 2
 
-Route::get('/hello', [WelcomeController::class,'hello']); #Modif Prak 2
+Route::get('/hello', [WelcomeController::class, 'hello']); #Modif Prak 2
 
 Route::get('/world', function () {
     return 'World';
@@ -103,3 +104,17 @@ Route::get('/user/{name?}', function ($name = 'John') {
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'about']);
 Route::get('/articles/{id}', [ArticleController::class, 'articles']);
+
+#Prak 2 Step 8
+Route::resource('photos', PhotoController::class);
+#Jika tidak semua route pada resource controller dibutuhkan
+Route::resource('photos', PhotoController::class)->only([
+    'index',
+    'show'
+]);
+Route::resource('photos', PhotoController::class)->except([
+    'create',
+    'store',
+    'update',
+    'destroy'
+]);
