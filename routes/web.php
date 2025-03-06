@@ -124,6 +124,8 @@ Route::resource('photos', PhotoController::class)->except([
 //     return view('hello', ['name' => 'Alka']);
 // });
 #Modif
-Route::get('/greeting', function () {
-    return view('blog.hello', ['name' => 'Alka']);
-});
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Alka']);
+// });
+#Modif Menampilkan View dari Controller
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
