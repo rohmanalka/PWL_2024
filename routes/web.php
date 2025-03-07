@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Foundation\Console\AboutCommand;
 use App\Http\Controllers\PhotoController;
+#Soal Praktikum
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,64 +48,13 @@ Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
 
 // Route::get('/articles/{id}', [PageController::class, 'articles']); #Modif Prak 2
 
-// Route::get('/user/{name?}', function ($name = null) {
-//     return 'Nama saya ' . $name;
-// });
-
 #Ubah code
 Route::get('/user/{name?}', function ($name = 'John') {
     return 'Nama saya ' . $name;
 });
 
-// #Route Name
-// Route::get('/user/profile', function () {
-//     //
-// })->name('profile');
-// Route::get(
-//     '/user/profile',
-//     [UserProfileController::class, 'show']
-// )->name('profile');
-// // Generating URLs...
-// $url = route('profile');
-// // Generating Redirects...
-// return redirect()->route('profile');
-
-// #Route Group
-// Route::middleware(['first', 'second'])->group(function () {
-//     Route::get('/', function () {
-//         // Uses first & second middleware...
-//     });
-//     Route::get('/user/profile', function () {
-//         // Uses first & second middleware...
-//     });
-// });
-// Route::domain('{account}.example.com')->group(function () {
-//     Route::get('user/{id}', function ($account, $id) {
-//         //
-//     });
-// });
-// Route::middleware('auth')->group(function () {
-//     Route::get('/user', [UserController::class, 'index']);
-//     Route::get('/post', [PostController::class, 'index']);
-//     Route::get('/event', [EventController::class, 'index']);
-// });
-
-// #Route Prefixes
-// Route::prefix('admin')->group(function () {
-//     Route::get('/user', [UserController::class, 'index']);
-//     Route::get('/post', [PostController::class, 'index']);
-//     Route::get('/event', [EventController::class, 'index']);
-// });
-
-// #Redirect Routes
-// Route::redirect('/here', '/there');
-
-// #View Routes
-// Route::view('/welcome', 'welcome');
-// Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
-
 #Modifikasi 2 Prak 2
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'about']);
 Route::get('/articles/{id}', [ArticleController::class, 'articles']);
 
@@ -129,3 +82,18 @@ Route::resource('photos', PhotoController::class)->except([
 // });
 #Modif Menampilkan View dari Controller
 Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+#SOAL PRAKTIKUM
+// Home
+Route::get('/', [HomeController::class, 'index']);
+// Category Routes
+Route::get('/category/food-beverage', [ProductController::class, 'foodBeverage']);
+Route::get('/category/beauty-health', [ProductController::class, 'beautyHealth']);
+Route::get('/category/home-care', [ProductController::class, 'homeCare']);
+Route::get('/category/baby-kid', [ProductController::class, 'babyKid']);
+
+// Sales (Penjualan)
+Route::get('/penjualan', [SaleController::class, 'index']);
+
+// User Profile
+Route::get('/user/{id}/name/{name}', [UserController::class, 'profile']);

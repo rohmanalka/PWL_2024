@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index() {
-        return 'Selamat Datang';
+    // public function index() {
+    //     return 'Selamat Datang';
+    // }
+
+    #SOAL PRAKTIKUM
+    public function index()
+    {
+        return view('users.home');
     }
 }
